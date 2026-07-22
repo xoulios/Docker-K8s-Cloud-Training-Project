@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieStreaming.Domain\MovieStreaming.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

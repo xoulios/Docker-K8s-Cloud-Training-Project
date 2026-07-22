@@ -1,0 +1,41 @@
+# ── Private collaboration files (local only — never committed, never in history) ──
+/CLAUDE.md
+/docs/
+/.claude/
+
+# ── .NET build artifacts ──
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+
+# ── Visual Studio / IDE ──
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ── Test & coverage output ──
+TestResults/
+coverage*.xml
+coverage*.json
+*.coverage
+*.trx
+
+# ── Local secrets & environment (dev secrets are provided via templates instead) ──
+*.env.local
+secrets.local.*
+
+# ── Logs & OS noise ──
+Logs/
+*.log
+Thumbs.db
+.DS_Store
+
+# ── Submission packages ──
+*.zip
+/submission/
