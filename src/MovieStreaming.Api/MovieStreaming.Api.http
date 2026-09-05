@@ -1,6 +1,88 @@
-@MovieStreaming.Api_HostAddress = http://localhost:5208
+@host = http://localhost:5080
 
-GET {{MovieStreaming.Api_HostAddress}}/weatherforecast/
+### Get all movies (sorted by genre, then director, then year)
+GET {{host}}/api/movies
 Accept: application/json
 
-###
+### Search by any field (combine freely)
+GET {{host}}/api/movies?director=nolan&year=2010
+Accept: application/json
+
+### Search by genre
+GET {{host}}/api/movies?genre=Drama
+Accept: application/json
+
+### Get a single movie by code
+GET {{host}}/api/movies/MX00000001
+Accept: application/json
+
+### Create a movie
+POST {{host}}/api/movies
+Content-Type: application/json
+
+{
+  "code": "IN00000004",
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "year": 2010,
+  "durationMinutes": 148,
+  "genres": ["Sci-fi", "Thriller"],
+  "language": "English",
+  "rating": 8.8,
+  "seasons": 0,
+  "rentalCost": 4.99
+}
+
+### Create with invalid code -> 400
+POST {{host}}/api/movies
+Content-Type: application/json
+
+{
+  "code": "SHORT",
+  "title": "Bad Movie",
+  "director": "Some Director",
+  "year": 2010,
+  "durationMinutes": 100,
+  "genres": ["Drama"],
+  "language": "English",
+  "rating": 7.0,
+  "seasons": 0,
+  "rentalCost": 1.99
+}
+
+### Create a duplicate -> 409
+POST {{host}}/api/movies
+Content-Type: application/json
+
+{
+  "code": "ZZ00000009",
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "year": 2010,
+  "durationMinutes": 148,
+  "genres": ["Drama"],
+  "language": "English",
+  "rating": 7.0,
+  "seasons": 0,
+  "rentalCost": 1.99
+}
+
+### Update mutable fields only
+PUT {{host}}/api/movies/IN00000004
+Content-Type: application/json
+
+{
+  "durationMinutes": 150,
+  "genres": ["Drama", "Fantasy"],
+  "language": "French",
+  "rating": 9.1,
+  "seasons": 2,
+  "rentalCost": 7.77
+}
+
+### Delete a movie
+DELETE {{host}}/api/movies/IN00000004
+
+### Unknown code -> 404
+GET {{host}}/api/movies/XX99999999
+Accept: application/json

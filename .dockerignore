@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.git/
+**/*.user
+tests/
+db/
+docs/
+CLAUDE.md
+.github/
+README.md
