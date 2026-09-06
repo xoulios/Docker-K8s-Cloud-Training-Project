@@ -8,6 +8,8 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddKeyPerFile("/run/secrets", optional: true);
+
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration).WriteTo.Console());
 

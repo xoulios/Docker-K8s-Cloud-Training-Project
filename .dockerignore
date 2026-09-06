@@ -8,6 +8,10 @@ db/
 docs/
 scripts/
 yaml/
+secrets/
+env/
+docker-compose.yml
+.env
 CLAUDE.md
 .github/
 README.md
