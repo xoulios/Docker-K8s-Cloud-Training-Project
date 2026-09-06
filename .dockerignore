@@ -6,6 +6,8 @@
 tests/
 db/
 docs/
+scripts/
+yaml/
 CLAUDE.md
 .github/
 README.md
